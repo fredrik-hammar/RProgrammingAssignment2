@@ -1,8 +1,14 @@
 ## Put comments here that give an overall description of what your
 ## functions do
 
-## Write a short comment describing this function
-
+## Create a matrix that caches computation of the inverse of the matrix.
+## The returned list will have the following functions as components for
+## access:
+##
+## - get(): get the underlying matrix
+## - set(y): set the underlying matrix to `y`, this will clear the inverse cache
+## - get.inverse(): get the cached inverse
+## - set.inverse(inverse) -- set the cached inverse to `inverse`
 makeCacheMatrix <- function(x = matrix()) {
   i <- NULL
   set <- function(y) {
@@ -18,8 +24,8 @@ makeCacheMatrix <- function(x = matrix()) {
 }
 
 
-## Write a short comment describing this function
-
+## Solve the matrix using `solve()` and cache the inverse.
+## Subsequent calls will returned the cached value.
 cacheSolve <- function(x, ...) {
   i <- x$get.inverse()
   if(!is.null(i)) {
